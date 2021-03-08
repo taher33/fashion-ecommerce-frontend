@@ -9,7 +9,7 @@ function Footer() {
           <div className={styles.about}>
             <div className={styles.flex}>
               <h2>About Us</h2>
-              <h2>+</h2>
+              <h2 className={styles.icon}>+</h2>
             </div>
             <p>Our Story</p>
             <p>FAQ</p>
@@ -17,7 +17,7 @@ function Footer() {
           <div className={styles.Legal}>
             <div className={styles.flex}>
               <h2>Legal</h2>
-              <h2>+</h2>
+              <h2 className={styles.icon}>+</h2>
             </div>
             <p>Privacy Policy</p>
             <p>Terms Conditions</p>

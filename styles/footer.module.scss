@@ -61,5 +61,36 @@
   .footer {
     padding-left: 3rem;
     padding-right: 3rem;
+    padding-bottom: 2rem;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer_text {
+      display: flex;
+    }
+    .icon {
+      display: none;
+    }
+    p {
+      display: block;
+    }
+    .about {
+      margin-right: 4rem;
+      h2 {
+        margin-bottom: 0.5rem;
+      }
+    }
+    .Legal {
+      h2 {
+        margin-bottom: 0.5rem;
+      }
+    }
+    .icons {
+      img {
+        margin-right: 2rem;
+      }
+    }
   }
 }

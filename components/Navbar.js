@@ -64,9 +64,9 @@ function Navbar() {
         <Link href="/login">
           <a className={styles.login_btn}>Login</a>
         </Link>
-        <a href="#" className={styles.signup_btn}>
-          Signup
-        </a>
+        <Link href="/signup">
+          <a className={styles.signup_btn}>Signup</a>
+        </Link>
       </div>
     </div>
   );

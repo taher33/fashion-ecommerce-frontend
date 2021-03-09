@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/login.module.scss";
+import styles from "../styles/signup.module.scss";
 
 function login() {
   const [active, setActive] = useState(true);
@@ -14,13 +14,20 @@ function login() {
     <div className={styles.body}>
       <div className={styles.container}>
         <div className={styles.card}>
-          <h1>Welcome Back</h1>
-          <p>Enter your credentials to access your acount</p>
+          <h1> Create your acount today</h1>
+          <p>
+            Get access to the latest fashion trends <br /> with a click of a
+            button
+          </p>
           <form>
+            <label htmlFor="name">Name</label>
+            <input type="text" name="name" />
             <label htmlFor="email">Email</label>
-            <input type="text" name="email" />
+            <input type="email" name="email" />
             <label htmlFor="password">Password</label>
             <input type="password" name="password" />
+            <label htmlFor="confirmPass">Confirm your password</label>
+            <input type="password" name="confirmPass" />
             <button
               type="submit"
               className={styles.btn}
@@ -28,7 +35,7 @@ function login() {
               onClick={handleSubmit}
             >
               {active ? (
-                "Sign In"
+                "Sign Up"
               ) : (
                 <div class={styles.lds_ripple}>
                   <div></div>

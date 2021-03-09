@@ -73,3 +73,10 @@
     }
   }
 }
+
+@media (min-width: 1002px) {
+  .nav_container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

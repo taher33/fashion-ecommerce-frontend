@@ -6,12 +6,14 @@ function Navbar() {
   return (
     <div className={styles.nav_container}>
       <div className={styles.header}>
-        <a href="#" className={styles.logo}>
-          <p>
-            Arachi <br />
-            Brands
-          </p>
-        </a>
+        <Link href="/">
+          <a className={styles.logo}>
+            <p>
+              Arachi <br />
+              Brands
+            </p>
+          </a>
+        </Link>
         <nav>
           <ul>
             <li>

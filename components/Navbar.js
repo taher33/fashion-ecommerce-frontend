@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/Navbar.module.scss";
+import Link from "next/link";
 
 function Navbar() {
   return (
@@ -60,9 +61,9 @@ function Navbar() {
       </div>
 
       <div className={styles.logs}>
-        <a href="#" className={styles.login_btn}>
-          Login
-        </a>
+        <Link href="/login">
+          <a className={styles.login_btn}>Login</a>
+        </Link>
         <a href="#" className={styles.signup_btn}>
           Signup
         </a>

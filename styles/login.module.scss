@@ -1,0 +1,69 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(240, 240, 240);
+  padding-top: 3rem;
+}
+
+.container {
+  min-height: max-content;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  padding-bottom: 4rem;
+  //   box-shadow: 4px 4px rgba($color: #000000, $alpha: 0.2);
+
+  .card {
+    text-align: center;
+    padding: 1rem 2rem;
+
+    h1 {
+      margin-bottom: 0.2rem;
+      font-size: 32px;
+    }
+
+    p {
+      color: rgb(131, 131, 131);
+      font-size: 14px;
+      margin-top: 0;
+    }
+
+    form {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      span {
+        display: block;
+        margin-top: 2rem;
+        margin-bottom: 0.2rem;
+      }
+      input {
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        background-color: rgb(221, 220, 220);
+        padding: 0.5rem 1.3rem;
+        height: 3rem;
+        border-radius: 0.5rem;
+
+        &:focus {
+          border: solid blueviolet 1px;
+          outline: none;
+        }
+      }
+      .btn {
+        margin: 3rem auto 0;
+        border: none;
+        background-color: blueviolet;
+        width: 100%;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        padding: 1rem 1.2rem;
+        border-radius: 20px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0.5rem;
+}
+
+@media (min-width: 800px) {
+  .cards {
+    grid-template-columns: auto auto auto;
+  }
+}

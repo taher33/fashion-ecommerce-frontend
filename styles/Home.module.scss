@@ -78,12 +78,20 @@
         display: block;
         position: absolute;
         height: 70vh;
-        width: 40vw;
-        right: 50px;
+        width: 60%;
+        right: 0px;
         top: 70px;
         z-index: -2;
         object-fit: cover;
       }
+    }
+  }
+}
+
+@media (min-width: 1020px) {
+  .container {
+    .hero_section {
+      padding: 50px 0;
     }
   }
 }

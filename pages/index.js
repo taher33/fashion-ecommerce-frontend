@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Product_cards from "../components/Product_cards";
+import Products_listing from "../components/products_listing";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
@@ -16,6 +16,8 @@ export default function Home() {
         </div>
         <img src="hero-img.png" alt="hero-img" className={styles.hero_img} />
       </section>
+
+      <Products_listing />
     </div>
   );
 }

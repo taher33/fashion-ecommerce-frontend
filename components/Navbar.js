@@ -16,18 +16,26 @@ function Navbar() {
         </Link>
         <nav>
           <ul>
-            <li>
-              <a href="#">New</a>
-            </li>
-            <li>
-              <a href="#">Men</a>
-            </li>
-            <li>
-              <a href="#">Women</a>
-            </li>
-            <li>
-              <a href="#">Kids</a>
-            </li>
+            <Link href="/listings">
+              <li>
+                <a href="#">New</a>
+              </li>
+            </Link>
+            <Link href="/listings">
+              <li>
+                <a href="#">Men</a>
+              </li>
+            </Link>
+            <Link href="listings">
+              <li>
+                <a href="#">Women</a>
+              </li>
+            </Link>
+            <Link href="/listings">
+              <li>
+                <a href="#">Kids</a>
+              </li>
+            </Link>
           </ul>
         </nav>
         <div className={styles.menu}>

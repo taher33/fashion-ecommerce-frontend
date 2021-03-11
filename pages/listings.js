@@ -5,7 +5,7 @@ import styles from "../styles/listings.module.scss";
 function listings() {
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.head}>
         <h3>Men's Wear (113)</h3>
         <div>
           <p>Filter icon/</p>
@@ -13,9 +13,9 @@ function listings() {
         </div>
       </div>
       <div className={styles.cards}>
-        <Product_cards />
-        <Product_cards />
-        <Product_cards />
+        {[0, 1, 2, 3, 4, 4, 5, 5, 55, 4, 5, 354, 2].map((el) => (
+          <Product_cards />
+        ))}
       </div>
     </div>
   );

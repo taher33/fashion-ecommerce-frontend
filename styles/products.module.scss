@@ -63,6 +63,7 @@
       }
     }
     .cards {
+      grid-gap: 1.5rem;
       .card {
         h4 {
           font-size: 11px;
@@ -76,6 +77,11 @@
 }
 
 @media (min-width: 768px) {
+  .section {
+    .cards {
+      grid-template-columns: auto auto auto;
+    }
+  }
 }
 
 @media (min-width: 1020px) {

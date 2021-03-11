@@ -1,12 +1,12 @@
 .card {
   height: min-content;
   img {
-    height: 70%;
+    max-height: 400px;
     // width: 20px;
     width: 100%;
     // border-radius: 10px;
     object-fit: cover;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(243, 243, 243);
     align-self: center;
   }
 
@@ -38,6 +38,17 @@
     }
     p {
       font-size: 13px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    h4 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 15px;
     }
   }
 }

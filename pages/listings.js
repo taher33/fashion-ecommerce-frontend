@@ -13,8 +13,10 @@ function listings() {
         </div>
       </div>
       <div className={styles.cards}>
-        {[0, 1, 2, 3, 4, 4, 5, 5, 55, 4, 5, 354, 2].map((el) => (
-          <Product_cards />
+        {[0, 1, 2, 3, 4, 4, 5, 5, 55, 4, 5, 354, 2].map((el, index) => (
+          <div key={index}>
+            <Product_cards />
+          </div>
         ))}
       </div>
     </div>

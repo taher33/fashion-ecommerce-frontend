@@ -1,5 +1,6 @@
 .card {
   height: min-content;
+
   img {
     max-height: 400px;
     // width: 20px;
@@ -17,6 +18,14 @@
   p {
     font-size: 9px;
     margin-top: -5px;
+  }
+  animation: 1500ms;
+
+  &:hover {
+    cursor: pointer;
+    // transform: translate(0, -20px);
+    // box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.2),
+    //   0 4px 4px 0 rgba(0, 0, 0, 0.15);
   }
 }
 

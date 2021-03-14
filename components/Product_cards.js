@@ -11,7 +11,7 @@ function Product_cards() {
   //     console.log("we called the api ");
   //   });
   const state = useSelector((state) => state);
-  console.log(state);
+  // console.log(state);
   return (
     <div className={styles.card}>
       <img

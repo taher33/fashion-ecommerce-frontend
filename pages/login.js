@@ -30,7 +30,7 @@ function login() {
               {active ? (
                 "Sign In"
               ) : (
-                <div class={styles.lds_ripple}>
+                <div className={styles.lds_ripple}>
                   <div></div>
                   <div></div>
                 </div>

@@ -16,7 +16,7 @@ function Navbar() {
         </Link>
         <nav>
           <ul>
-            <Link href="/listings">
+            <Link href="/listings?type=new">
               <li>
                 <a href="#">New</a>
               </li>

@@ -37,7 +37,7 @@ function login() {
               {active ? (
                 "Sign Up"
               ) : (
-                <div class={styles.lds_ripple}>
+                <div className={styles.lds_ripple}>
                   <div></div>
                   <div></div>
                 </div>

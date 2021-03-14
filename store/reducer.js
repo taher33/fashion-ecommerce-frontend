@@ -1,26 +1,29 @@
+import { LOGIN, LOGOUT, PRODUCTS } from "./actions";
+
 export const initialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0,
+  user: {},
+  logedIn: false,
+  products: [],
 };
 
-export const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "TICK":
+export const reducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case LOGIN:
       return {
         ...state,
-        lastUpdate: action.lastUpdate,
-        light: !!action.light,
+        logedIn: true,
+        user: payload,
       };
-    case "INCREMENT":
+    case LOGOUT:
       return {
         ...state,
-        count: state.count + 1,
+        logedIn: false,
+        user: {},
       };
-    case "DECREMENT":
+    case PRODUCTS:
       return {
         ...state,
-        count: state.count - 1,
+        products: [...payload],
       };
     case "RESET":
       return {

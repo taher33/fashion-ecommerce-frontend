@@ -15,8 +15,16 @@
     div {
       // display: flex;
       p {
+        position: relative;
+        display: flex;
+        align-items: center;
         margin-left: 2rem;
         font-size: 12px;
+        // transition: filter 300ms;
+        :hover {
+          cursor: pointer;
+          // filter: ;
+        }
       }
     }
   }

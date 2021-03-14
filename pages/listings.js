@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import Dropdown from "../components/Dropdown";
 import Product_cards from "../components/Product_cards";
 import styles from "../styles/listings.module.scss";
+import SortIcon from "@material-ui/icons/Sort";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 function listings() {
   return (
@@ -8,8 +11,12 @@ function listings() {
       <div className={styles.head}>
         <h3>Men's Wear (113)</h3>
         <div>
-          <p>Filter icon/</p>
-          <p>Sort By icon/</p>
+          <p>
+            <Dropdown icon={<SortIcon />} name={"Sort"} />
+          </p>
+          <p>
+            <Dropdown icon={<FilterListIcon />} name={"Filter"} />
+          </p>
         </div>
       </div>
       <div className={styles.cards}>

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { axios_instance } from "../lib/axios ";
 import styles from "../styles/login.module.scss";
 
 function login() {
   const [active, setActive] = useState(true);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setActive(false);
-    setTimeout(() => {
-      setActive(true);
-    }, 2000);
+    axios_instance(true)({
+      data: { email: "taher@gmail.com", password: "test1234" },
+    });
   };
   return (
     <div className={styles.body}>

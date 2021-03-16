@@ -7,9 +7,15 @@ function login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setActive(false);
-    axios_instance(true)({
-      data: { email: "taher@gmail.com", password: "test1234" },
-    });
+    try {
+      const res = await axios_instance(true)({
+        data: { email: "taher@gmail.com", password: "test1234" },
+      });
+      console.log(res.data);
+      setActive(true);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className={styles.body}>

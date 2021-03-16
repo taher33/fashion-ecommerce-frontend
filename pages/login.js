@@ -9,11 +9,14 @@ function login() {
     setActive(false);
     try {
       const res = await axios_instance(true)({
+        method: "POST",
+        url: "/users/login",
         data: { email: "taher@gmail.com", password: "test1234" },
       });
       console.log(res.data);
       setActive(true);
     } catch (err) {
+      setActive(true);
       console.log(err);
     }
   };

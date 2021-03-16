@@ -71,6 +71,14 @@
         align-items: center;
         justify-content: center;
       }
+      .error{
+        border: solid red 1px;
+        
+      }
+
+      span{
+        color: red;
+      }
     }
   }
 }

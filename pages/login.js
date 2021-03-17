@@ -1,29 +1,24 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { axios_instance } from "../lib/axios ";
+import { useSelector, useDispatch } from "react-redux";
 
 import styles from "../styles/login.module.scss";
+import { loginA } from "../store/actions";
 
 function login() {
   const [active, setActive] = useState(true);
+  const [apiErrors, setapiErrors] = useState({});
   const { register, handleSubmit, errors } = useForm();
+  const dispatch = useDispatch();
 
-  const onSubmit = async ({ email, password }) => {
+  const onSubmit = async (data) => {
     setActive(false);
 
-    try {
-      const res = await axios_instance(true)({
-        method: "POST",
-        url: "/users/login",
-        // data: { email: "taher@gmail.com", password: "test1234" },
-        data: { email, password },
-      });
-      console.log(res.data);
-      setActive(true);
-    } catch (err) {
-      setActive(true);
-      console.log(err);
-    }
+    const error = (await dispatch(loginA(data))) || {};
+    setapiErrors(error);
+    console.log(apiErrors);
+    setActive(true);
   };
   return (
     <div className={styles.body}>
@@ -32,6 +27,7 @@ function login() {
           <h1>Welcome Back</h1>
           <p>Enter your credentials to access your acount</p>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <span>{apiErrors !== {} && apiErrors}</span>
             <label htmlFor="email">Email</label>
             <input
               className={errors.email && styles.error}

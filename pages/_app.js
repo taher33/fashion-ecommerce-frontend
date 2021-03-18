@@ -5,11 +5,11 @@ import { Provider } from "react-redux";
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   return (
-    <Layout>
-      <Provider store={store}>
+    <Provider store={store}>
+      <Layout>
         <Component {...pageProps} />
-      </Provider>
-    </Layout>
+      </Layout>
+    </Provider>
   );
 }
 

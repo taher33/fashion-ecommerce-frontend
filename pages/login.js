@@ -1,25 +1,31 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { axios_instance } from "../lib/axios ";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { loginA } from "../store/actions";
 
 import styles from "../styles/login.module.scss";
-import { loginA } from "../store/actions";
 
 function login() {
   const [active, setActive] = useState(true);
-  const [apiErrors, setapiErrors] = useState({});
+  const [apiErrors, setapiErrors] = useState({ msg: "" });
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const onSubmit = async (data) => {
     setActive(false);
 
-    const error = (await dispatch(loginA(data))) || {};
-    setapiErrors(error);
-    console.log(apiErrors);
-    setActive(true);
+    try {
+      await dispatch(loginA(data));
+      setActive(true);
+      router.push("/");
+    } catch (err) {
+      setActive(true);
+      setapiErrors({ msg: err.response.data.msg });
+    }
   };
+
   return (
     <div className={styles.body}>
       <div className={styles.container}>
@@ -27,10 +33,10 @@ function login() {
           <h1>Welcome Back</h1>
           <p>Enter your credentials to access your acount</p>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <span>{apiErrors !== {} && apiErrors}</span>
+            <span>{apiErrors.msg}</span>
             <label htmlFor="email">Email</label>
             <input
-              className={errors.email && styles.error}
+              className={(errors.email || apiErrors.msg) && styles.error}
               type="text"
               name="email"
               ref={register({
@@ -44,7 +50,7 @@ function login() {
             {errors.email && <span>{errors.email.message}</span>}
             <label htmlFor="password">Password</label>
             <input
-              className={errors.password && styles.error}
+              className={(errors.password || apiErrors.msg) && styles.error}
               type="password"
               name="password"
               ref={register({

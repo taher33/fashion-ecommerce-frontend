@@ -1,8 +1,9 @@
 .body {
   // width: 100vw;
-  height: 100vh;
+  height: max-content;
   background-color: rgb(240, 240, 240);
   padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .container {
@@ -71,13 +72,13 @@
         align-items: center;
         justify-content: center;
       }
-      .error{
+      .error {
         border: solid red 1px;
-        
       }
 
-      span{
+      span {
         color: red;
+        font-size: 14px;
       }
     }
   }

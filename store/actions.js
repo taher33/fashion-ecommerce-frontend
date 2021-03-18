@@ -19,7 +19,21 @@ export const loginA = ({ email, password }) => async (dispatch) => {
     });
     const user = res.data.user || {};
     dispatch(loginAction(user));
+    return { msg: "" };
   } catch (err) {
-    return err.response.data.msg;
+    throw err;
+  }
+};
+
+export const checkAuth = () => async (dispatch) => {
+  try {
+    const res = await axios_instance(true)({
+      method: "GET",
+      url: "users/checkAuth",
+    });
+    const user = res.data.user || {};
+    dispatch(loginAction(user));
+  } catch (err) {
+    console.log(err);
   }
 };

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import styles from "../styles/Navbar.module.scss";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "../store/actions";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { IconButton } from "@material-ui/core";
+import styles from "../styles/Navbar.module.scss";
 
 function Navbar() {
   const state = useSelector((state) => state);

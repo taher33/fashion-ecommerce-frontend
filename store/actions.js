@@ -9,6 +9,11 @@ const loginAction = (user) => ({
   payload: user,
 });
 
+const productsAction = (products) => ({
+  type: PRODUCTS,
+  payload: products,
+});
+
 export const loginA = ({ email, password }) => async (dispatch) => {
   try {
     const res = await axios_instance(true)({
@@ -25,15 +30,29 @@ export const loginA = ({ email, password }) => async (dispatch) => {
   }
 };
 
-export const checkAuth = () => async (dispatch) => {
+export const checkAuth = (header = {}) => async (dispatch) => {
   try {
     const res = await axios_instance(true)({
       method: "GET",
       url: "users/checkAuth",
+      headers: { cookie: header },
     });
+
     const user = res.data.user || {};
     dispatch(loginAction(user));
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getProducts = () => async (dispatch) => {
+  try {
+    const { data } = await axios_instance()({
+      url: "/products",
+      method: "GET",
+    });
+    dispatch(productsAction(data.products));
+  } catch (error) {
+    console.log(error.response);
   }
 };

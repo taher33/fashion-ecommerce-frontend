@@ -1,24 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { initializeStore } from "../store/init_store";
 import { useDispatch, useSelector } from "react-redux";
 
 import Dropdown from "../components/Dropdown";
 import Product_cards from "../components/Product_cards";
 import styles from "../styles/listings.module.scss";
 import SortIcon from "@material-ui/icons/Sort";
-import { checkAuth } from "../store/actions";
+import { checkAuth, getProducts } from "../store/actions";
 
-export const getServerSideProps = async ({ req, query }) => {
-  const reduxStore = initializeStore();
-  const { dispatch, getState } = reduxStore;
+// export const getServerSideProps = async ({ req, query }) => {
+//   try {
+//     const {data} =await axios_instance()({url:''})
 
-  return { props: { initialReduxState: reduxStore.getState() } };
-};
+//   } catch (error) {
+
+//   }
+//   // return { props: { initialReduxState: reduxStore.getState() } };
+//   return { props: {} };
+// };
 
 function listings() {
   const state = useSelector((state) => state);
-  console.log(state);
+  const dispatch = useDispatch();
+
+  const { products = [] } = state;
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -31,9 +40,9 @@ function listings() {
         </div>
       </div>
       <div className={styles.cards}>
-        {[0, 1, 2, 3, 4, 4, 5, 5, 55, 4, 5, 354, 2].map((el, index) => (
-          <div key={index}>
-            <Product_cards />
+        {products.map((el) => (
+          <div key={el._id}>
+            <Product_cards {...el} />
           </div>
         ))}
       </div>

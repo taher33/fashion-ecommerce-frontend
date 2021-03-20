@@ -25,11 +25,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         products: [...payload],
       };
-    case "RESET":
-      return {
-        ...state,
-        count: initialState.count,
-      };
+
     default:
       return state;
   }

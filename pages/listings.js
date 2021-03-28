@@ -8,17 +8,6 @@ import styles from "../styles/listings.module.scss";
 import SortIcon from "@material-ui/icons/Sort";
 import { checkAuth, getProducts } from "../store/actions";
 
-// export const getServerSideProps = async ({ req, query }) => {
-//   try {
-//     const {data} =await axios_instance()({url:''})
-
-//   } catch (error) {
-
-//   }
-//   // return { props: { initialReduxState: reduxStore.getState() } };
-//   return { props: {} };
-// };
-
 function listings() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();

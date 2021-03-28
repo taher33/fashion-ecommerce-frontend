@@ -15,7 +15,7 @@ function Navbar() {
     if (!state.logedIn) {
       dispatch(checkAuth());
     }
-  }, []);
+  }, [state.logedIn]);
   return (
     <div className={styles.nav_container}>
       <div className={styles.header}>

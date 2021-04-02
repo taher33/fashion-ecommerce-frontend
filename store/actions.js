@@ -59,6 +59,7 @@ export const signup = ({ email, password, name, passwordConf }) => async (
     dispatch(loginAction(user));
     return { msg: "" };
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };

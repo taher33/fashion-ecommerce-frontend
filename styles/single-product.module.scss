@@ -1,6 +1,15 @@
 .container {
   max-width: 1000px;
-  margin: 3rem auto;
+  margin: 2rem auto 4rem auto;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 1rem;
+
+  img {
+    object-fit: cover;
+    height: 420px;
+    align-self: center;
+    background-color: rgb(243, 243, 243);
+  }
 }

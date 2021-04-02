@@ -41,7 +41,25 @@ export const checkAuth = (header = {}) => async (dispatch) => {
     const user = res.data.user || {};
     dispatch(loginAction(user));
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
+  }
+};
+
+export const signup = ({ email, password, name, passwordConf }) => async (
+  dispatch
+) => {
+  try {
+    const res = await axios_instance(true)({
+      method: "POST",
+      url: "/users/signup",
+
+      data: { email, password, passwordConf, name },
+    });
+    const user = res.data.user || {};
+    dispatch(loginAction(user));
+    return { msg: "" };
+  } catch (err) {
+    throw err;
   }
 };
 

@@ -9,10 +9,9 @@ import styles from "../styles/signup.module.scss";
 function login() {
   const [active, setActive] = useState(true);
   const [apiErrors, setapiErrors] = useState({ msg: "" });
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setError } = useForm();
   const dispatch = useDispatch();
   const router = useRouter();
-  console.log(errors);
 
   const onSubmit = async (data) => {
     setActive(false);
@@ -20,10 +19,12 @@ function login() {
     try {
       await dispatch(signup(data));
       setActive(true);
-      router.push("/");
+      // router.push("/");
+      console.log("success");
     } catch (err) {
       setActive(true);
-      setapiErrors({ msg: err.response.data.msg });
+      console.log(err.response.data);
+      setapiErrors({ msg: err.response.data.message });
     }
   };
 
@@ -74,8 +75,8 @@ function login() {
               ref={register({
                 required: "must specify a password",
                 minLength: {
-                  value: 4,
-                  message: "please use more then 4 charachters",
+                  value: 8,
+                  message: "please use more then 8 charachters",
                 },
               })}
             />
@@ -87,6 +88,10 @@ function login() {
               name="passwordConf"
               ref={register({
                 required: "confirm your password",
+                minLength: {
+                  value: 8,
+                  message: "please use more then 8 charachters",
+                },
               })}
             />
             {errors.passwordConf && <span>{errors.passwordConf.message}</span>}

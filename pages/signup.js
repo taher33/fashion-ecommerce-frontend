@@ -8,7 +8,7 @@ import styles from "../styles/signup.module.scss";
 
 function login() {
   const [active, setActive] = useState(true);
-  const [apiErrors, setapiErrors] = useState({ msg: "" });
+
   const { register, handleSubmit, errors, setError } = useForm();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -19,14 +19,21 @@ function login() {
     try {
       await dispatch(signup(data));
       setActive(true);
-      // router.push("/");
+      router.push("/");
       console.log("success");
-    } catch (err) {
+    } catch ({ response: { data } }) {
+      console.log(data);
       setActive(true);
-      console.log(err.response.data);
-      setapiErrors({ msg: err.response.data.message });
+
+      data.message.forEach((element) => {
+        setError(element.field, {
+          type: "manual",
+          message: element.message,
+        });
+      });
     }
   };
+  console.log(errors);
 
   return (
     <div className={styles.body}>
@@ -38,8 +45,6 @@ function login() {
             button
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <span>{apiErrors.msg}</span>
-
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -52,11 +57,12 @@ function login() {
                 },
               })}
             />
+
             {errors.name && <span>{errors.name.message}</span>}
 
             <label htmlFor="email">Email</label>
             <input
-              // type="email"
+              type="email"
               name="email"
               ref={register({
                 required: "must specify an email",
@@ -82,10 +88,10 @@ function login() {
             />
             {errors.password && <span>{errors.password.message}</span>}
 
-            <label htmlFor="confirmPass">Confirm your password</label>
+            <label htmlFor="passwordConfirm">Confirm your password</label>
             <input
               type="password"
-              name="passwordConf"
+              name="passwordConfirm"
               ref={register({
                 required: "confirm your password",
                 minLength: {
@@ -94,7 +100,9 @@ function login() {
                 },
               })}
             />
-            {errors.passwordConf && <span>{errors.passwordConf.message}</span>}
+            {errors.passwordConfirm && (
+              <span>{errors.passwordConfirm.message}</span>
+            )}
 
             <button type="submit" className={styles.btn} disabled={!active}>
               {active ? (

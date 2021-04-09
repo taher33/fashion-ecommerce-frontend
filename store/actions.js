@@ -45,7 +45,7 @@ export const checkAuth = (header = {}) => async (dispatch) => {
   }
 };
 
-export const signup = ({ email, password, name, passwordConf }) => async (
+export const signup = ({ email, password, name, passwordConfirm }) => async (
   dispatch
 ) => {
   try {
@@ -53,13 +53,12 @@ export const signup = ({ email, password, name, passwordConf }) => async (
       method: "POST",
       url: "/users/signup",
 
-      data: { email, password, passwordConf, name },
+      data: { email, password, passwordConfirm, name },
     });
     const user = res.data.user || {};
     dispatch(loginAction(user));
     return { msg: "" };
   } catch (err) {
-    console.log(err);
     throw err;
   }
 };

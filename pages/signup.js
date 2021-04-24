@@ -18,22 +18,18 @@ function login() {
 
     try {
       await dispatch(signup(data));
-      setActive(true);
       router.push("/");
-      console.log("success");
     } catch ({ response: { data } }) {
-      console.log(data);
-      setActive(true);
-
       data.message.forEach((element) => {
         setError(element.field, {
           type: "manual",
           message: element.message,
         });
       });
+    } finally {
+      setActive(true);
     }
   };
-  console.log(errors);
 
   return (
     <div className={styles.body}>

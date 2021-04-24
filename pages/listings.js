@@ -4,9 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Dropdown from "../components/Dropdown";
 import Product_cards from "../components/Product_cards";
-import styles from "../styles/listings.module.scss";
 import SortIcon from "@material-ui/icons/Sort";
 import { checkAuth, getProducts } from "../store/actions";
+
+import styles from "../styles/listings.module.scss";
+
+export async function getStaticProps(context) {
+  console.log(context);
+  return {
+    props: {},
+  };
+}
 
 function listings() {
   const state = useSelector((state) => state);

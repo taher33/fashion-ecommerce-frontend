@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { useSelector } from "react-redux";
 import Products_listing from "../components/products_listing";
+
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
   const state = useSelector((state) => state);
-  console.log(state);
+
   return (
     <div className={styles.container}>
       <section className={styles.hero_section}>

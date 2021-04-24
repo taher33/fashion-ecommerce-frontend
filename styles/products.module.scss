@@ -1,9 +1,7 @@
 .section {
-  max-width: 1000px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0.3rem 20px;
-  margin-bottom: 3rem;
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -78,6 +76,11 @@
 
 @media (min-width: 768px) {
   .section {
+    .header {
+      h1 {
+        font-size: 28px;
+      }
+    }
     .cards {
       grid-template-columns: auto auto auto;
     }
@@ -88,5 +91,10 @@
   .section {
     padding-right: 0;
     padding-left: 0;
+    .header {
+      h1 {
+        font-size: 34px;
+      }
+    }
   }
 }

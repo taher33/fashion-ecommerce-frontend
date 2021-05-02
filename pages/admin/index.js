@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
+import { axios_instance } from "../../lib/axios ";
 function index() {
+  const [data, setData] = useState([]);
+  const [dates, setDates] = useState([]);
+  useEffect(() => {
+    axios_instance(true)({
+      url: "/products/admin",
+      method: "GET",
+    })
+      .then((res) => {
+        const total = res.data.model.map((el) => el.total * 1);
+        const date = res.data.model.map((el) => el._id);
+        setData(total);
+        setDates(date);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div>
       <Line
         data={{
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: dates,
           tension: 1,
           datasets: [
             {
               label: "# of Votes",
               tension: 0.3,
-              data: [12, 9, 3, 5, 15, 3],
+              data: data,
 
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",

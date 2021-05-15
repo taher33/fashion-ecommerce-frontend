@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { axios_instance } from "../../lib/axios ";
 function index() {
   const [data, setData] = useState([]);
   const [dates, setDates] = useState([]);
-  useEffect(() => {
-    axios_instance(true)({
-      url: "/products/admin",
-      method: "GET",
-    })
-      .then((res) => {
-        const total = res.data.model.map((el) => el.total * 1);
-        const date = res.data.model.map((el) => el._id);
-        setData(total);
-        setDates(date);
-      })
-      .catch((err) => {
-        console.log(err);
+  const call_api = async () => {
+    try {
+      const { data } = await axios_instance(true)({
+        url: "/products/admin",
+        method: "GET",
       });
+
+      const total = data.model.map((el) => el.total * 1);
+      const date = data.model.map((el) => el._id);
+      setData(total);
+      setDates(date);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    call_api();
   }, []);
   return (
     <div>

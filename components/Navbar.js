@@ -53,7 +53,7 @@ function Navbar() {
           </ul>
         </nav>
         <div className={styles.menu}>
-          <PhoneMenu />
+          <PhoneMenu userIsLogedIn={state.logedIn} />
         </div>
       </div>
 

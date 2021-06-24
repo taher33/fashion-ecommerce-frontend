@@ -15,8 +15,9 @@ import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import FaceIcon from "@material-ui/icons/Face";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
-function PhoneMenu() {
+function PhoneMenu({ userIsLogedIn }) {
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -75,20 +76,33 @@ function PhoneMenu() {
           </ListItem>
         </List>
         <Divider />
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <LockOpenIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Login"} />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <ExitToAppIcon />
-            </ListItemIcon>
-            <ListItemText primary={"SignUp"} />
-          </ListItem>
-        </List>
+        {/* ///////----------////// */}
+
+        {userIsLogedIn ? (
+          <List>
+            <ListItem button>
+              <ListItemIcon>
+                <ShoppingCartIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Cart"} />
+            </ListItem>
+          </List>
+        ) : (
+          <List>
+            <ListItem button>
+              <ListItemIcon>
+                <LockOpenIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Login"} />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary={"SignUp"} />
+            </ListItem>
+          </List>
+        )}
       </Drawer>
     </div>
   );

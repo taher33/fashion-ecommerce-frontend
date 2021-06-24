@@ -1,28 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Drawer from "@material-ui/core/Drawer";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-
-const drawerWidth = 240;
+import NewReleasesIcon from "@material-ui/icons/NewReleases";
+import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
+import FaceIcon from "@material-ui/icons/Face";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 function PhoneMenu() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -48,34 +43,51 @@ function PhoneMenu() {
       <Drawer variant="persistent" anchor="right" open={open}>
         <div>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+            <ChevronRightIcon />
           </IconButton>
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button>
+            <ListItemIcon>
+              <NewReleasesIcon />
+            </ListItemIcon>
+            <ListItemText primary={"New"} />
+          </ListItem>
+
+          <ListItem button>
+            <ListItemIcon>
+              <EmojiPeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Men"} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <EmojiPeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Women"} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <FaceIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Kids"} />
+          </ListItem>
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button>
+            <ListItemIcon>
+              <LockOpenIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Login"} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText primary={"SignUp"} />
+          </ListItem>
         </List>
       </Drawer>
     </div>

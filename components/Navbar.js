@@ -52,27 +52,26 @@ function Navbar() {
             </Link>
           </ul>
         </nav>
+        {state.logedIn ? (
+          <div className={styles.logs}>
+            <IconButton>
+              <ShoppingCartIcon />
+            </IconButton>
+          </div>
+        ) : (
+          <div className={styles.logs}>
+            <Link href="/login">
+              <a className={styles.login_btn}>Login</a>
+            </Link>
+            <Link href="/signup">
+              <a className={styles.signup_btn}>Signup</a>
+            </Link>
+          </div>
+        )}
         <div className={styles.menu}>
           <PhoneMenu userIsLogedIn={state.logedIn} />
         </div>
       </div>
-
-      {state.logedIn ? (
-        <div>
-          <IconButton>
-            <ShoppingCartIcon />
-          </IconButton>
-        </div>
-      ) : (
-        <div className={styles.logs}>
-          <Link href="/login">
-            <a className={styles.login_btn}>Login</a>
-          </Link>
-          <Link href="/signup">
-            <a className={styles.signup_btn}>Signup</a>
-          </Link>
-        </div>
-      )}
     </div>
   );
 }

@@ -16,6 +16,7 @@ import FaceIcon from "@material-ui/icons/Face";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Link from "next/link";
 
 function PhoneMenu({ userIsLogedIn }) {
   const [open, setOpen] = useState(false);
@@ -49,31 +50,41 @@ function PhoneMenu({ userIsLogedIn }) {
         </div>
         <Divider />
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <NewReleasesIcon />
-            </ListItemIcon>
-            <ListItemText primary={"New"} />
-          </ListItem>
+          <Link href="/listings?type=new">
+            <ListItem button>
+              <ListItemIcon>
+                <NewReleasesIcon />
+              </ListItemIcon>
+              <ListItemText primary={"New"} />
+            </ListItem>
+          </Link>
 
-          <ListItem button>
-            <ListItemIcon>
-              <EmojiPeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Men"} />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <EmojiPeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Women"} />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <FaceIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Kids"} />
-          </ListItem>
+          <Link href="/listings">
+            <ListItem button>
+              <ListItemIcon>
+                <EmojiPeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Men"} />
+            </ListItem>
+          </Link>
+
+          <Link href="/listings">
+            <ListItem button>
+              <ListItemIcon>
+                <EmojiPeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Women"} />
+            </ListItem>
+          </Link>
+
+          <Link href="/listings">
+            <ListItem button>
+              <ListItemIcon>
+                <FaceIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Kids"} />
+            </ListItem>
+          </Link>
         </List>
         <Divider />
         {/* ///////----------////// */}
@@ -89,18 +100,23 @@ function PhoneMenu({ userIsLogedIn }) {
           </List>
         ) : (
           <List>
-            <ListItem button>
-              <ListItemIcon>
-                <LockOpenIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Login"} />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <ExitToAppIcon />
-              </ListItemIcon>
-              <ListItemText primary={"SignUp"} />
-            </ListItem>
+            <Link href="/login">
+              <ListItem button>
+                <ListItemIcon>
+                  <LockOpenIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Login"} />
+              </ListItem>
+            </Link>
+
+            <Link href="/signup">
+              <ListItem button>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary={"SignUp"} />
+              </ListItem>
+            </Link>
           </List>
         )}
       </Drawer>

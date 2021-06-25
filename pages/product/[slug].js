@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import styles from "../../styles/single-product.module.scss";
+import { axios_instance } from "../../lib/axios ";
+import axios from "axios";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function product() {
-  const [open, setopen] = useState(false);
+function product(props) {
+  console.log(props);
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -22,6 +25,7 @@ function product() {
 
     setOpen(false);
   };
+
   return (
     <div className={styles.container}>
       <img src="/alex-hddife-6wWiZlA2n0Q-unsplash-removebg-preview.png" />
@@ -43,16 +47,45 @@ function product() {
   );
 }
 
+async function getProducts() {
+  const { data } = await axios_instance()({
+    method: "GET",
+    url: "products",
+  });
+  console.log(data.products);
+  return data.products;
+}
+
+async function getOneProduct(id) {
+  try {
+    const { data } = await axios_instance(true)({
+      method: "GET",
+      url: "products/single" + id,
+    });
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getStaticPaths() {
+  const products = await getProducts();
+  const paths = products.map((el) => {
+    return {
+      params: { slug: el._id },
+    };
+  });
   return {
-    paths: [{ params: { slug: "t-shert" } }, { params: { slug: "pants" } }],
+    paths,
     fallback: true,
   };
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
-  return { props: {}, revalidate: 3600 };
+  const props = await getOneProduct(params.slug);
+
+  return { props, revalidate: 3 };
 }
 
 export default product;

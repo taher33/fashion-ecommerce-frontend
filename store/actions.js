@@ -14,54 +14,59 @@ const productsAction = (products) => ({
   payload: products,
 });
 
-export const loginA = ({ email, password }) => async (dispatch) => {
-  try {
-    const res = await axios_instance(true)({
-      method: "POST",
-      url: "/users/login",
-      // data: { email: "taher@gmail.com", password: "test1234" },
-      data: { email, password },
-    });
-    const user = res.data.user || {};
-    dispatch(loginAction(user));
-    return { msg: "" };
-  } catch (err) {
-    throw err;
-  }
-};
+// data: { email: "taher@gmail.com", password: "test1234" },
 
-export const checkAuth = (header = {}) => async (dispatch) => {
-  try {
-    const res = await axios_instance(true)({
-      method: "GET",
-      url: "users/checkAuth",
-      headers: { cookie: header },
-    });
+export const loginA =
+  ({ email, password }) =>
+  async (dispatch) => {
+    try {
+      const res = await axios_instance(true)({
+        method: "POST",
+        url: "/users/login",
+        data: { email, password },
+      });
+      const user = res.data.user || {};
+      dispatch(loginAction(user));
+      return { msg: "" };
+    } catch (err) {
+      throw err;
+    }
+  };
 
-    const user = res.data.user || {};
-    dispatch(loginAction(user));
-  } catch (err) {
-    console.log(err.response);
-  }
-};
+export const checkAuth =
+  (header = {}) =>
+  async (dispatch) => {
+    try {
+      const res = await axios_instance(true)({
+        method: "GET",
+        url: "users/checkAuth",
+        headers: { cookie: header },
+      });
 
-export const signup = ({ email, password, name, passwordConfirm }) => async (
-  dispatch
-) => {
-  try {
-    const res = await axios_instance(true)({
-      method: "POST",
-      url: "/users/signup",
+      const user = res.data.user || {};
+      dispatch(loginAction(user));
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
 
-      data: { email, password, passwordConfirm, name },
-    });
-    const user = res.data.user || {};
-    dispatch(loginAction(user));
-    return { msg: "" };
-  } catch (err) {
-    throw err;
-  }
-};
+export const signup =
+  ({ email, password, name, passwordConfirm }) =>
+  async (dispatch) => {
+    try {
+      const res = await axios_instance(true)({
+        method: "POST",
+        url: "/users/signup",
+
+        data: { email, password, passwordConfirm, name },
+      });
+      const user = res.data.user || {};
+      dispatch(loginAction(user));
+      return { msg: "" };
+    } catch (err) {
+      throw err;
+    }
+  };
 
 export const getProducts = () => async (dispatch) => {
   try {

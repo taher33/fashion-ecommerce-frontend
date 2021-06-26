@@ -4,14 +4,12 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import styles from "../../styles/single-product.module.scss";
 import { axios_instance } from "../../lib/axios ";
-import axios from "axios";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 function product(props) {
-  console.log(props);
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -52,7 +50,7 @@ async function getProducts() {
     method: "GET",
     url: "products",
   });
-  console.log(data.products);
+
   return data.products;
 }
 
@@ -65,7 +63,7 @@ async function getOneProduct(id) {
 
     return data;
   } catch (error) {
-    console.log(error);
+    throw error.response.data;
   }
 }
 
@@ -73,7 +71,7 @@ export async function getStaticPaths() {
   const products = await getProducts();
   const paths = products.map((el) => {
     return {
-      params: { slug: el._id },
+      params: { id: el._id },
     };
   });
   return {
@@ -83,8 +81,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const props = await getOneProduct(params.slug);
-
+  let props = {};
+  try {
+    props = await getOneProduct(params.id);
+  } catch (error) {
+    console.log(error.err.statusCode);
+  }
   return { props, revalidate: 3 };
 }
 

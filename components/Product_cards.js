@@ -3,19 +3,17 @@ import Link from "next/link";
 
 import styles from "../styles/card.module.scss";
 
-function Product_cards() {
+function Product_cards(props) {
+  console.log(props);
   return (
     <>
       <div className={styles.card}>
-        <Link href="product/23">
-          <img
-            src="/alex-hddife-6wWiZlA2n0Q-unsplash-removebg-preview.png"
-            alt=""
-          />
+        <Link href={"product/" + props._id}>
+          <img src={"http://localhost:5000/" + props.image} alt="" />
         </Link>
-        <h4>Nike Geforce</h4>
-        <p>men's shoe</p>
-        <h4>$599</h4>
+        <h4>{props.title}</h4>
+        <p>{props.details}</p>
+        <h4>{props.price + "$"}</h4>
       </div>
     </>
   );

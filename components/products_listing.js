@@ -6,12 +6,16 @@ import Product_cards from "./Product_cards";
 import styles from "../styles/products.module.scss";
 
 async function getProducts(sort) {
-  const { data } = await axios_instance()({
-    method: "GET",
-    url: "products?sort=" + sort,
-  });
+  try {
+    const { data } = await axios_instance()({
+      method: "GET",
+      url: "products?sort=" + sort,
+    });
 
-  return data.products.slice(1);
+    return data.products.slice(1);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function Products_listing(props) {

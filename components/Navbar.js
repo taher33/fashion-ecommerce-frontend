@@ -40,12 +40,12 @@ function Navbar() {
                 <a href="#">Men</a>
               </li>
             </Link>
-            <Link href="listings/women">
+            <Link href="/listings/women">
               <li>
                 <a href="#">Women</a>
               </li>
             </Link>
-            <Link href="/listings/K=kids">
+            <Link href="/listings/kids">
               <li>
                 <a href="#">Kids</a>
               </li>

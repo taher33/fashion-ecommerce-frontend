@@ -22,24 +22,35 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const products = await getProducts();
+  let props = {};
+  try {
+    const products = await getProducts(context.params);
+    props = { products };
+  } catch (error) {
+    console.log(error);
+  }
   return {
-    props: { products },
+    props,
     revalidate: 30,
   };
 }
 
-async function getProducts() {
-  const { data } = await axios_instance()({
-    method: "GET",
-    url: "products",
-  });
+async function getProducts(params) {
+  try {
+    const { data } = await axios_instance()({
+      method: "GET",
+      url: "products?type=" + params.slug,
+    });
 
-  return data.products;
+    return data.products;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
 
 function listings(props) {
-  const { products } = props;
+  const { products = [] } = props;
 
   return (
     <div className={styles.container}>

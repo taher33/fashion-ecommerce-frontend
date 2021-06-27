@@ -39,8 +39,6 @@ async function getProducts() {
 }
 
 function listings(props) {
-  const state = useSelector((state) => state);
-
   const { products } = props;
 
   return (
@@ -48,9 +46,9 @@ function listings(props) {
       <div className={styles.head}>
         <h3>Men's Wear (113)</h3>
         <div>
-          <p>
+          {/* <p>
             <Dropdown icon={<SortIcon />} name={"Sort"} />
-          </p>
+          </p> */}
         </div>
       </div>
 

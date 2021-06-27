@@ -21,7 +21,8 @@ export default function Home() {
         <img src="hero-img.png" alt="hero-img" className={styles.hero_img} />
       </section>
 
-      <Products_listing />
+      <Products_listing sort={""} title={"new"} />
+      <Products_listing sort={"-sold"} title={"best Selller"} />
     </div>
   );
 }

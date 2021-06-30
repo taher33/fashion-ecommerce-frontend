@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "../store/actions";
 import PhoneMenu from "./phone-menu";
+import Dialoge from "./Dialoge";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { IconButton } from "@material-ui/core";
@@ -10,7 +11,16 @@ import styles from "../styles/Navbar.module.scss";
 
 function Navbar() {
   const state = useSelector((state) => state);
+  const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     if (!state.logedIn) {
@@ -54,9 +64,14 @@ function Navbar() {
         </nav>
         {state.logedIn ? (
           <div className={styles.logs}>
-            <IconButton>
+            <IconButton onClick={handleClickOpen}>
               <ShoppingCartIcon />
             </IconButton>
+            <Dialoge
+              // selectedValue={selectedValue}
+              open={open}
+              onClose={handleClose}
+            />
           </div>
         ) : (
           <div className={styles.logs}>

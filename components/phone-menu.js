@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Dialoge from "./Dialoge";
 
 import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
+
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
@@ -20,6 +21,7 @@ import Link from "next/link";
 
 function PhoneMenu({ userIsLogedIn }) {
   const [open, setOpen] = useState(false);
+  const [openCart, setOpenCart] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -29,10 +31,16 @@ function PhoneMenu({ userIsLogedIn }) {
     setOpen(false);
   };
 
+  const handleClickOpen = () => {
+    setOpenCart(true);
+  };
+
+  const handleClose = () => {
+    setOpenCart(false);
+  };
+
   return (
     <div>
-      <CssBaseline />
-
       <IconButton
         color="inherit"
         aria-label="open drawer"
@@ -87,17 +95,23 @@ function PhoneMenu({ userIsLogedIn }) {
           </Link>
         </List>
         <Divider />
-        {/* ///////----------////// */}
 
         {userIsLogedIn ? (
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <ShoppingCartIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Cart"} />
-            </ListItem>
-          </List>
+          <>
+            <List>
+              <ListItem button>
+                <ListItemIcon onClick={handleClickOpen}>
+                  <ShoppingCartIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Cart"} />
+              </ListItem>
+            </List>
+            <Dialoge
+              // selectedValue={selectedValue}
+              open={openCart}
+              onClose={handleClose}
+            />
+          </>
         ) : (
           <List>
             <Link href="/login">

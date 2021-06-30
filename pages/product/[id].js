@@ -10,6 +10,7 @@ function Alert(props) {
 }
 
 function product(props) {
+  console.log(props);
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -46,22 +47,28 @@ function product(props) {
 }
 
 async function getProducts() {
-  const { data } = await axios_instance()({
-    method: "GET",
-    url: "products",
-  });
+  try {
+    const { data } = await axios_instance()({
+      method: "GET",
+      url: "products",
+    });
 
-  return data.products;
+    return data.products;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 async function getOneProduct(id) {
   try {
     const { data } = await axios_instance(true)({
       method: "GET",
-      url: "products/single" + id,
+      url: "products/single/" + id,
     });
 
-    return data;
+    console.log("product:", data.product);
+    return data.product;
   } catch (error) {
     throw error.response.data;
   }
@@ -87,6 +94,7 @@ export async function getStaticProps({ params }) {
   } catch (error) {
     console.log(error.err.statusCode);
   }
+  console.log("props:", props);
   return { props, revalidate: 3 };
 }
 

@@ -4,7 +4,7 @@ import { axios_instance } from "../lib/axios ";
 import { useForm } from "react-hook-form";
 
 function CreatePost() {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setError } = useForm();
 
   return (
     <div>
@@ -65,6 +65,5 @@ const createPost = async (product) => {
     return result;
   } catch (err) {
     console.log(err.response.data);
-    return (err.data = null);
   }
 };

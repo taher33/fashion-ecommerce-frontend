@@ -15,6 +15,7 @@ async function getProducts(sort) {
     return data.products.slice(1);
   } catch (error) {
     console.error(error);
+    return [];
   }
 }
 
@@ -25,6 +26,7 @@ function Products_listing(props) {
     getProducts(props.sort).then((res) => setproducts(res));
   }, []);
 
+  if (products.length === 0) return <h3>loading ...</h3>;
   return (
     <section className={styles.section}>
       <div className={styles.header}>

@@ -4,13 +4,14 @@ import Link from "next/link";
 import styles from "../styles/card.module.scss";
 
 function Product_cards(props) {
+  console.log(props);
   return (
     <>
       <div className={styles.card}>
         <Link href={"/product/" + props._id}>
           <img
             src={"https://fashion-app-taher.herokuapp.com/" + props.image}
-            alt=""
+            alt="image"
           />
         </Link>
         <h4>{props.title}</h4>

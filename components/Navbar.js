@@ -41,24 +41,16 @@ function Navbar() {
         <nav>
           <ul>
             <Link href="/listings/new">
-              <li>
-                <a href="#">New</a>
-              </li>
+              <a>New</a>
             </Link>
             <Link href="/listings/men">
-              <li>
-                <a href="#">Men</a>
-              </li>
+              <a>Men</a>
             </Link>
             <Link href="/listings/women">
-              <li>
-                <a href="#">Women</a>
-              </li>
+              <a>Women</a>
             </Link>
             <Link href="/listings/kids">
-              <li>
-                <a href="#">Kids</a>
-              </li>
+              <a>Kids</a>
             </Link>
           </ul>
         </nav>

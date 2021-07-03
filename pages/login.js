@@ -18,12 +18,11 @@ function login() {
 
     try {
       await dispatch(loginA(data));
-      setActive(true);
       router.push("/");
     } catch (err) {
-      setActive(true);
       setapiErrors({ msg: err.response.data.msg });
     }
+    setActive(true);
   };
 
   return (

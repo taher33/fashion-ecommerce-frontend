@@ -46,7 +46,7 @@ export const checkAuth =
       const user = res.data.user || {};
       dispatch(loginAction(user));
     } catch (err) {
-      console.log(err.response);
+      console.error(err.response);
     }
   };
 

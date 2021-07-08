@@ -28,7 +28,7 @@
 
   .cards {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 0.5rem;
   }
 }
@@ -64,7 +64,7 @@
       }
     }
     .cards {
-      grid-template-columns: auto auto auto;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 }

@@ -1,40 +1,47 @@
 import React, { useEffect, useState } from "react";
 
+import { axios_instance } from "../../lib/axios ";
+
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import styles from "../../styles/single-product.module.scss";
-import { axios_instance } from "../../lib/axios ";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function product(props) {
-  console.log(props);
+async function addToCart(id) {
+  try {
+    const { data } = await axios_instance(true)({
+      method: "POST",
+      url: "/cart",
+      data: { product: id },
+    });
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function product({ image, price, details, title, _id }) {
   const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setOpen(true);
+    await addToCart(_id);
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
     setOpen(false);
   };
 
   return (
     <div className={styles.container}>
-      <img src="/alex-hddife-6wWiZlA2n0Q-unsplash-removebg-preview.png" />
+      <img src={"https://fashion-app-taher.herokuapp.com/" + image} />
       <div className={styles.content}>
-        <h2>product name</h2>
-        <h3>100$</h3>
-        <p>
-          Velit est ex adipisicing fugiat esse ea pariatur magna. Deserunt
-          laboris et anim fugiat minim incididunt
-        </p>
+        <h2>{title}</h2>
+        <h3>{price}.00$</h3>
+        <p>{details}</p>
         <button onClick={handleClick}>Add to Cart</button>
       </div>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -67,7 +74,6 @@ async function getOneProduct(id) {
       url: "products/single/" + id,
     });
 
-    console.log("product:", data.product);
     return data.product;
   } catch (error) {
     throw error.response.data;
@@ -94,7 +100,7 @@ export async function getStaticProps({ params }) {
   } catch (error) {
     console.log(error.err.statusCode);
   }
-  console.log("props:", props);
+
   return { props, revalidate: 3 };
 }
 

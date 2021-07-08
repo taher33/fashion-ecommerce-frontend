@@ -24,7 +24,7 @@
       width: 100%;
       background-color: #f21530;
       color: white;
-      border-radius: 1.2rem;
+      border-radius: 0.6rem;
 
       &:hover {
         cursor: pointer;
@@ -45,8 +45,13 @@
   .container {
     flex-direction: row;
 
+    img {
+      width: 80%;
+    }
+
     .content {
       margin-left: 2rem;
+      width: 70%;
 
       h2 {
         font-size: 33px;

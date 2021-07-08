@@ -4,7 +4,6 @@ import Link from "next/link";
 import styles from "../styles/card.module.scss";
 
 function Product_cards(props) {
-  console.log(props);
   return (
     <>
       <div className={styles.card}>

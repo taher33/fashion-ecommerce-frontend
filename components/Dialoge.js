@@ -23,6 +23,7 @@ import { axios_instance } from "../lib/axios ";
 function Dialoge(props) {
   const { onClose, selectedValue, open } = props;
   const [Enteries, setEnteries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleDelete = async (id) => {
     try {
@@ -44,10 +45,13 @@ function Dialoge(props) {
   const handleListItemClick = (value) => {
     onClose(value);
   };
+
   useEffect(() => {
-    getCartData().then((res) => setEnteries(res));
+    getCartData().then((res) => {
+      setEnteries(res);
+      setLoading(false);
+    });
   }, [open]);
-  console.log(Enteries);
 
   return (
     <Dialog
@@ -59,8 +63,8 @@ function Dialoge(props) {
     >
       <h2 className={styles.header}>My Cart</h2>
       <div className={styles.itemsContainer}>
-        {Enteries.length === 0 ? (
-          <h3>loading</h3>
+        {Enteries.length === 0 && !loading ? (
+          <h3>so empty</h3>
         ) : (
           Enteries.map(({ amount, product, _id }, i, { length }) => (
             <>

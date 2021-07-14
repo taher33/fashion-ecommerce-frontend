@@ -25,6 +25,7 @@ async function getProducts(query, page = 1) {
 }
 
 function listings({ pageName, products }) {
+  const [page, setpage] = useState(1);
   return (
     <div className={styles.container}>
       <div className={styles.head}>

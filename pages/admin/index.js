@@ -1,11 +1,57 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { Line } from "react-chartjs-2";
 import { axios_instance } from "../../lib/axios ";
 import CreatePost from "../../components/CreatePost";
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuth } from "../../store/actions";
+
+export const getServerSideProps = async ({ req }) => {
+  try {
+    const {
+      data: { user },
+    } = await axios_instance(true)({
+      method: "GET",
+      url: "users/checkAuth?type=false",
+      headers: { cookie: req.cookies.jwt },
+    });
+
+    if (!user && user.role !== "admin") {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    }
+    if (user.role !== "admin") {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+};
 
 function index() {
   const [data, setData] = useState([]);
   const [dates, setDates] = useState([]);
+  const { user, logedIn } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   const call_api = async () => {
     try {
       const { data } = await axios_instance(true)({
@@ -21,9 +67,16 @@ function index() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     call_api();
-  }, []);
+
+    if (!logedIn) dispatch(checkAuth());
+    if (user.role !== "admin") {
+      console.log(user.role);
+    }
+  }, [logedIn]);
+
   return (
     <>
       <div>

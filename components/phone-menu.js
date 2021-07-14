@@ -58,7 +58,7 @@ function PhoneMenu({ userIsLogedIn }) {
         </div>
         <Divider />
         <List>
-          <Link href="/listings/new">
+          <Link href="/listings?type=new">
             <ListItem button>
               <ListItemIcon>
                 <NewReleasesIcon />
@@ -67,7 +67,7 @@ function PhoneMenu({ userIsLogedIn }) {
             </ListItem>
           </Link>
 
-          <Link href="/listings/men">
+          <Link href="/listings?type=men">
             <ListItem button>
               <ListItemIcon>
                 <EmojiPeopleIcon />
@@ -76,7 +76,7 @@ function PhoneMenu({ userIsLogedIn }) {
             </ListItem>
           </Link>
 
-          <Link href="/listings/women">
+          <Link href="/listings?typewomen">
             <ListItem button>
               <ListItemIcon>
                 <EmojiPeopleIcon />
@@ -85,7 +85,7 @@ function PhoneMenu({ userIsLogedIn }) {
             </ListItem>
           </Link>
 
-          <Link href="/listings/kids">
+          <Link href="/listings?type=kids">
             <ListItem button>
               <ListItemIcon>
                 <FaceIcon />

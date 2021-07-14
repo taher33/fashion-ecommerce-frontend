@@ -25,7 +25,6 @@ async function addToCart(id) {
 
 function product({ image, price, details, title, _id }) {
   const [open, setOpen] = useState(false);
-
   const handleClick = async () => {
     setOpen(true);
     await addToCart(_id);

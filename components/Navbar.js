@@ -40,16 +40,16 @@ function Navbar() {
         </Link>
         <nav>
           <ul>
-            <Link href="/listings/new">
+            <Link href="/listings?type=new">
               <a>New</a>
             </Link>
-            <Link href="/listings/men">
+            <Link href="/listings?type=men">
               <a>Men</a>
             </Link>
-            <Link href="/listings/women">
+            <Link href="/listings?type=women">
               <a>Women</a>
             </Link>
-            <Link href="/listings/kids">
+            <Link href="/listings?type=kids">
               <a>Kids</a>
             </Link>
           </ul>

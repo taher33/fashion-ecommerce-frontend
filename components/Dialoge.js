@@ -24,7 +24,11 @@ function Dialoge(props) {
   const { onClose, selectedValue, open } = props;
   const [Enteries, setEnteries] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  //calculating the total price of cart enteries
+  const total = Enteries.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.product.price;
+  }, 0);
+  //deletes a cart enterie
   const handleDelete = async (id) => {
     try {
       await axios_instance(true)({
@@ -67,36 +71,32 @@ function Dialoge(props) {
           <h3>so empty</h3>
         ) : (
           Enteries.map(({ amount, product, _id }, i, { length }) => (
-            <>
-              <div className={styles.item} key={_id}>
-                <img
-                  className={styles.img}
-                  src={
-                    "https://fashion-app-taher.herokuapp.com/" + product.image
-                  }
-                />
-                <div className={styles.count}>1 x</div>
-                <div className={styles.text}>
-                  <h3>{product.title} </h3>
-                  <p>{product.price}$</p>
-                </div>
-                <div className={styles.iconButton}>
-                  <IconButton
-                    edge={"end"}
-                    color={"secondary"}
-                    onClick={() => handleDelete(_id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </div>
+            <div className={styles.item} key={_id}>
+              <img
+                className={styles.img}
+                src={"https://fashion-app-taher.herokuapp.com/" + product.image}
+              />
+              <div className={styles.count}>1 x</div>
+              <div className={styles.text}>
+                <h3>{product.title} </h3>
+                <p>{product.price}$</p>
+              </div>
+              <div className={styles.iconButton}>
+                <IconButton
+                  edge={"end"}
+                  color={"secondary"}
+                  onClick={() => handleDelete(_id)}
+                >
+                  <DeleteIcon />
+                </IconButton>
               </div>
               {i !== length - 1 ? <Divider /> : null}
-            </>
+            </div>
           ))
         )}
         <div className={styles.total}>
           <h3>Total</h3>
-          <h2>$1223.00</h2>
+          <h2>${total}.00</h2>
         </div>
         <div className={styles.button}>
           Continue to checkout

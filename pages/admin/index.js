@@ -12,7 +12,7 @@ export const getServerSideProps = async ({ req }) => {
       data: { user },
     } = await axios_instance(true)({
       method: "GET",
-      url: "users/checkAuth?type=false",
+      url: "users/checkAuth",
       headers: { cookie: req.cookies.jwt },
     });
 

@@ -1,6 +1,9 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import Products_listing from "../components/products_listing";
+
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 import styles from "../styles/Home.module.scss";
 
@@ -16,7 +19,11 @@ export default function Home() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus
             egestas faucibus.
           </p>
-          <button className={styles.cta_btn}>Start Shopping</button>
+          <Link href="/signup">
+            <button className={styles.cta_btn}>
+              Start Shopping <KeyboardArrowRightIcon />
+            </button>
+          </Link>
         </div>
         <img src="hero-img.png" alt="hero-img" className={styles.hero_img} />
       </section>

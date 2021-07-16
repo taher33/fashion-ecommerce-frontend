@@ -31,6 +31,9 @@
       }
 
       button {
+        display: flex;
+        align-items: center;
+
         margin-top: 3rem;
         border: none;
         padding: 1rem 1.5rem;
@@ -39,6 +42,11 @@
         background-color: #f21530;
         color: white;
         border-radius: 0.8rem;
+        &:hover {
+          transition: 1s ease all;
+          cursor: pointer;
+          background-color: #ee394e;
+        }
       }
     }
   }

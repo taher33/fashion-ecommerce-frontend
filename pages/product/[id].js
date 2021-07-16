@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import CheckoutForm from "../../components/checkoutform";
 import { axios_instance } from "../../lib/axios ";
 
 import Snackbar from "@material-ui/core/Snackbar";
@@ -41,7 +41,12 @@ function product({ image, price, details, title, _id }) {
         <h2>{title}</h2>
         <h3>{price}.00$</h3>
         <p>{details}</p>
-        <button onClick={handleClick}>Add to Cart</button>
+        <CheckoutForm>
+          <button>buy</button>
+        </CheckoutForm>
+        <button className={styles.secondary} onClick={handleClick}>
+          Add to Cart
+        </button>
       </div>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">

@@ -34,7 +34,7 @@
         display: flex;
         align-items: center;
 
-        margin-top: 3rem;
+        margin: 3rem auto 0;
         border: none;
         padding: 1rem 1.5rem;
         font-weight: bold;
@@ -83,6 +83,9 @@
 
         p {
           margin: 0.3rem 0;
+        }
+        button {
+          margin: 3rem 0 0 0;
         }
       }
 

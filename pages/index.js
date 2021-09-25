@@ -16,8 +16,7 @@ export default function Home() {
         <div className={styles.hero_text}>
           <h1>Building a Better You</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus
-            egestas faucibus.
+            We carry all type of clothes, shoes, outdoor gears and much more.
           </p>
           <Link href="/signup">
             <button className={styles.cta_btn}>

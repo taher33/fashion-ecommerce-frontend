@@ -39,7 +39,7 @@ function product({ image, price, details, title, _id }) {
 
   return (
     <div className={styles.container}>
-      <img src={"https://fashion-app-taher.herokuapp.com/" + image} />
+      <img src={image} />
       <div className={styles.content}>
         <h2>{title}</h2>
         <h3>{price}.00$</h3>

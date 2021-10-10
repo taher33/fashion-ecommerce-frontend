@@ -8,10 +8,7 @@ function Product_cards(props) {
     <>
       <div className={styles.card}>
         <Link href={"/product/" + props._id}>
-          <img
-            src={"https://fashion-app-taher.herokuapp.com/" + props.image}
-            alt="image"
-          />
+          <img src={props.image} alt="image" />
         </Link>
         <h4>{props.title}</h4>
         <p>{props.details}</p>

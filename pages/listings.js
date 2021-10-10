@@ -34,11 +34,6 @@ function listings({ pageName, products }) {
         ) : (
           <h3>{`${pageName}'s wear`} </h3>
         )}
-        <div>
-          {/* <p>
-            <Dropdown icon={<SortIcon />} name={"Sort"} />
-          </p> */}
-        </div>
       </div>
 
       <InfiniteScroll
